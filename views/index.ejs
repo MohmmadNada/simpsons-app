@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home page</title>
+</head>
+<header>
+    <!-- <div>
+        <img src="/img/the_simpsons.png" alt="">
+    </div>
+    <div>
+        <a href="/favorite-quotes">favorite quotes</a>
+        <a href="/">Home</a>
+    </div> -->
+</header>
+
+<body>
+    <main>
+        <%qoutesResult.forEach(element=>{%>
+            <div class="<%=element.characterDirection%>">
+                <h3>
+                    <%=element.character%>
+                </h3>
+                <p>
+                    <%=element.quote%>
+                </p>
+                <img src="<%=element.image%>" alt="">
+
+                <form action="/favorite-quotes" method="POST">
+                    <input type="hidden" name="Direction" value="<%=element.characterDirection%>">
+                    <input type="hidden" name="character" value="<%=element.character%>">
+                    <input type="hidden" name="quote" value="<%=element.quote%>">
+                    <input type="hidden" name="image" value="<%=element.image%>">
+                    <button type="submit">Favor character</button>
+
+                </form>
+            </div>
+            <%})%>
+    </main>
+</body>
+
+</html>

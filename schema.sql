@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS
+users(
+  id SERIAL PRIMARY KEY NOT NULL,
+  character VARCHAR(256) NOT NULL,
+  quote TEXT NOT NULL,
+  image TEXT NOT NULL,
+  direction VARCHAR(256) 
+);
