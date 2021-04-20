@@ -7,17 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home page</title>
 </head>
-<header>
-    <!-- <div>
-        <img src="/img/the_simpsons.png" alt="">
-    </div>
-    <div>
-        <a href="/favorite-quotes">favorite quotes</a>
-        <a href="/">Home</a>
-    </div> -->
-</header>
+
 
 <body>
+    <header>
+        <div>
+            <img src="/img/the_simpsons.png" alt="">
+        </div>
+        <div>
+            <a href="/favorite-quotes">favorite quotes</a>
+            <a href="/">Home</a>
+        </div>
+    </header>
     <main>
         <%qoutesResult.forEach(element=>{%>
             <div class="<%=element.characterDirection%>">

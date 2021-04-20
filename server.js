@@ -37,6 +37,8 @@ const client = new pg.Client(process.env.DATABASE_URL);
 app.get('/', hamepageHandler)
 app.post('/favorite-quotes', addFavor)
 app.get('/favorite-quotes', showFavor)
+app.get('/favorite-quotes/:quote_id', detailsHandler)
+
 
 let allQouts = []
 
@@ -64,10 +66,10 @@ function addFavor(request, response) {
     let quote = request.body.quote;
     let image = request.body.image;
     let values = [character, quote, image, direction]
-    let SQL = `INSERT INTO users (character, quote, image, direction)
-    VALUES ($1,$2,$3,$4);`
-    client.query(SQL, values).then(responseData => {
 
+    let SQL = `INSERT INTO users (character, quote, image, direction)
+    VALUES ($1,$2,$3,$4) RETURNING *;`
+    client.query(SQL, values).then(responseData => {
         response.render('fover')
     })
 }
@@ -76,8 +78,12 @@ function showFavor(request, response) {
     let SQL = `SELECT * FROM users`;
     client.query(SQL).then(responseData => {
         console.log(responseData.rows);
-        response.render('fover')
+        response.render('fover', { savedData: responseData.rows })
     })
+}
+
+function detailsHandler(request, response) {
+
 }
 // -- WRITE YOUR CALLBACK FUNCTIONS FOR THE ROUTES HERE --
 
